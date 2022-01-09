@@ -1,18 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import MyView from './components/myNativeComponent';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import UploadProgressView from './components/UploadProgressView';
 
-function Home(props: any) {
+function Home() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.h1}>This is the Home page</Text>
-      <Text style={styles.alignCenter}>{props.title}</Text>
-      <MyView />
+    <View>
+      <Text>Hello world</Text>
+      <UploadProgressView />
     </View>
   );
 }
 const styles = StyleSheet.create({
-  container: {},
+  container: {flex: 1},
   h1: {
     textAlign: 'center',
     fontSize: 24,

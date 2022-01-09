@@ -1,16 +1,32 @@
 import React from 'react';
-import {requireNativeComponent} from 'react-native';
-let ReactView;
-if (!ReactView) {
-  ReactView = requireNativeComponent('MyReactView');
-}
+import {requireNativeComponent, ScrollView, ToastAndroid} from 'react-native';
+let ReactView = requireNativeComponent('MyReactView');
+import {Dimensions} from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
-function MyView() {
+function MyView(props) {
+  const onLoad = event => {
+    console.log('event is -->', event);
+    if (props.onLoaded) {
+      return;
+    }
+    console.log('event is -->', event);
+    props.onLoaded();
+  };
+
+  const longClick = () => {
+    ToastAndroid.show('Long Click Performed!', 500);
+  };
+
   return (
-    <ReactView
-      myProp="ching"
-      style={{height: 100, width: 100, backgroundColor: 'red', opacity: 0.5}}
-    />
+    <ScrollView>
+      <ReactView
+        style={{width: windowWidth, height: windowHeight}}
+        onLoad={onLoad}
+        longClick={longClick}
+      />
+    </ScrollView>
   );
 }
 

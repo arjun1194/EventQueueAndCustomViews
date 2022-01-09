@@ -21,6 +21,10 @@ public class MyViewPackage implements ReactPackage {
     @NonNull
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-        return Arrays.asList(new MyReactView());
+        return Arrays.asList(
+                new MyReactView(reactContext),
+                new FragmentViewManager(reactContext),
+                new UploadProgressViewManager(reactContext)
+        );
     }
 }
